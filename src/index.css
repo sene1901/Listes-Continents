@@ -1,0 +1,78 @@
+body{
+  background-color: #2a5298 !important;
+}
+.content1{
+  background-color: #43577a;
+
+}
+.content2{
+   background: linear-gradient(90deg, #005aa7, #00bfa5) !important; 
+   
+}
+
+/* Navbar avec style thématique "continent" */
+.custom-navbar {
+  padding: 1.5rem 2rem;      
+  font-size: 1.2rem;         
+  background: linear-gradient(90deg, #005aa7, #00bfa5); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);          
+}
+
+/* Brand plus visible */
+.custom-navbar .navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f0f8ff !important;           
+  transition: color 0.3s;
+}
+
+.custom-navbar .navbar-brand:hover {
+  color: #ffd700;          
+}
+
+/* Liens de navigation */
+.custom-navbar .nav-link {
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  color: #f0f8ff;
+  transition: color 0.3s;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: #ffd700;             /* doré sur hover et actif */
+}
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.modal-content {
+  background-color: #191955 !important;
+  color: #fff !important;
+}
+
+
+  .carte-modal{
+    background-color: #03459c98 !important;
+    width: 300px !important;
+    height: 250px !important;
+  
+  }
+  .texte1{
+  color: #00bfa5 !important;
+  
+  }
+  .outline-success{
+    background-color: #00bfa5 !important;
+    color: #fff !important;
+  }
+  .opacite{
+    opacity:0.8 ;
+  }
+  .carte-pays{
+     background-color: #04255298 !important;
+  }
+  .titre{
+     color: #00bfa5 !important;
+  }
