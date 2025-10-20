@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import CountryList from "../components/ListContry";
+import CountriesList from "../components/CountriesList";
 import { Spinner } from "react-bootstrap";
 
 const Accueil = () => {
@@ -13,6 +12,7 @@ const Accueil = () => {
   });
   const [loading, setLoading] = useState(true);
 
+  // 🔹 Charger la liste des pays au montage
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all?fields=name,capital,languages,flags,region,population")
       .then((res) => res.json())
@@ -20,9 +20,14 @@ const Accueil = () => {
         setCountries(data);
         setFiltered(data);
         setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Erreur de chargement :", error);
+        setLoading(false);
       });
   }, []);
 
+  // 🔹 Mettre à jour le filtrage à chaque changement
   useEffect(() => {
     let results = [...countries];
     if (filters.search) {
@@ -51,13 +56,12 @@ const Accueil = () => {
 
   return (
     <>
-      <Header
-        onSearch={(v) => setFilters({ ...filters, search: v })}
-        onRegionChange={(v) => setFilters({ ...filters, region: v })}
-        onSortChange={(v) => setFilters({ ...filters, sort: v })}
-        onReset={() => setFilters({ search: "", region: "all", sort: "asc" })}
+      {/* 🔹 Supprimé le Header */}
+      <CountriesList
+        countries={filtered}
+        filters={filters}
+        setFilters={setFilters}
       />
-      <CountryList countries={filtered} />
     </>
   );
 };

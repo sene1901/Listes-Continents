@@ -11,7 +11,7 @@ const CardCountry = ({ country }) => {
           alt={country.name.common}
           style={{ height: "160px", objectFit: "cover" }}
         />
-        <div className="overlay">
+        <div className="">
           <p><strong>Population :</strong> {country.population.toLocaleString()}</p>
           <p><strong>Capitale :</strong> {country.capital ? country.capital[0] : "—"}</p>
         </div>

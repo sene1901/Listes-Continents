@@ -1,10 +1,10 @@
 .flag-container {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .overlay {
-  position: absolute;
+  position: relative;
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
   color: white;

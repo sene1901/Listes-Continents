@@ -1,8 +1,8 @@
 body{
-  background-color: #2a5298 !important;
+  background-color: #e9ebee !important;
 }
 .content1{
-  background-color: #43577a;
+  background-color: #02296d;
 
 }
 .content2{
@@ -27,7 +27,7 @@ body{
 }
 
 .custom-navbar .navbar-brand:hover {
-  color: #ffd700;          
+  color: #233a6b;          
 }
 
 /* Liens de navigation */
@@ -40,7 +40,7 @@ body{
 
 .custom-navbar .nav-link:hover,
 .custom-navbar .nav-link.active {
-  color: #ffd700;             /* doré sur hover et actif */
+  color: #233a6b;             /* doré sur hover et actif */
 }
 .card:hover {
   transform: scale(1.05);
@@ -76,3 +76,4 @@ body{
   .titre{
      color: #00bfa5 !important;
   }
+  
