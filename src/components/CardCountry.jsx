@@ -1,27 +1,20 @@
-import { Card } from "react-bootstrap";
-import "./CountryCard.css"; // Pour l’effet hover
+// src/components/CountryCard.jsx
+import React from "react";
+import { Card, Button } from "react-bootstrap";
 
-const CardCountry = ({ country }) => {
+const CardCountry = ({ country, onShow }) => {
   return (
-    <Card className="h-100 shadow-sm border-0 country-card">
-      <div className="flag-container">
-        <Card.Img
-          variant="top"
-          src={country.flags.svg}
-          alt={country.name.common}
-          style={{ height: "160px", objectFit: "cover" }}
-        />
-        <div className="">
-          <p><strong>Population :</strong> {country.population.toLocaleString()}</p>
-          <p><strong>Capitale :</strong> {country.capital ? country.capital[0] : "—"}</p>
-        </div>
-      </div>
-      <Card.Body>
+    <Card className="shadow-lg border-0 carte-pays text-light">
+      <Card.Img variant="top" src={country.flags?.png} alt={country.name.common} 
+       style={{ height: "150px", objectFit: "cover" }}/>
+      <Card.Body className="text-center opacite content1">
         <Card.Title>{country.name.common}</Card.Title>
-        <Card.Text className="text-muted">{country.region}</Card.Text>
+        <Button className="mt-2 outline-success" onClick={() => onShow(country)}>
+          Voir détails
+        </Button>
       </Card.Body>
     </Card>
   );
 };
 
-export default CardCountry;
+export default CardCountry ;

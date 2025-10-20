@@ -1,68 +1,68 @@
-import { useEffect, useState } from "react";
+// src/pages/Accueil.jsx
+import React, { useState } from "react";
+import { Container, Form, Button } from "react-bootstrap";
 import CountriesList from "../components/CountriesList";
-import { Spinner } from "react-bootstrap";
+
 
 const Accueil = () => {
-  const [countries, setCountries] = useState([]);
-  const [filtered, setFiltered] = useState([]);
-  const [filters, setFilters] = useState({
-    search: "",
-    region: "all",
-    sort: "asc",
-  });
-  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [region, setRegion] = useState("all");
+  const [sortOrder, setSortOrder] = useState("asc");
 
-  // 🔹 Charger la liste des pays au montage
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all?fields=name,capital,languages,flags,region,population")
-      .then((res) => res.json())
-      .then((data) => {
-        setCountries(data);
-        setFiltered(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Erreur de chargement :", error);
-        setLoading(false);
-      });
-  }, []);
-
-  // 🔹 Mettre à jour le filtrage à chaque changement
-  useEffect(() => {
-    let results = [...countries];
-    if (filters.search) {
-      results = results.filter((c) =>
-        c.name.common.toLowerCase().includes(filters.search.toLowerCase())
-      );
-    }
-    if (filters.region !== "all") {
-      results = results.filter((c) => c.region === filters.region);
-    }
-    results.sort((a, b) =>
-      filters.sort === "asc"
-        ? a.name.common.localeCompare(b.name.common)
-        : b.name.common.localeCompare(a.name.common)
-    );
-    setFiltered(results);
-  }, [filters, countries]);
-
-  if (loading)
-    return (
-      <div className="d-flex justify-content-center align-items-center mt-5">
-        <Spinner animation="border" variant="success" />
-        <span className="ms-2 text-muted">Chargement des pays...</span>
-      </div>
-    );
+  const handleReset = () => {
+    setSearchTerm("");
+    setRegion("all");
+    setSortOrder("asc");
+  };
 
   return (
-    <>
-      {/* 🔹 Supprimé le Header */}
+    <Container className="mt-5">
+      <h2 className="text-center mb-4 titre">🌍 Liste des pays du monde</h2>
+
+      {/* 🔹 Barre de filtre déplacée ici */}
+      <div className="d-flex flex-wrap justify-content-around align-items-center mb-4 shadow py-5 content1">
+        <Form.Control
+          type="text"
+          placeholder="🔍 Rechercher un pays..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-auto mb-2"
+        />
+
+        <Form.Select
+          value={region}
+          onChange={(e) => setRegion(e.target.value)}
+          className="w-auto mb-2"
+        >
+          <option value="all">Toutes les régions</option>
+          <option value="Africa">Afrique</option>
+          <option value="Americas">Amériques</option>
+          <option value="Asia">Asie</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Océanie</option>
+        </Form.Select>
+
+        <Form.Select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className="w-auto mb-2"
+        >
+          <option value="asc">A → Z</option>
+          <option value="desc">Z → A</option>
+        </Form.Select>
+
+        <Button variant="outline-success" onClick={handleReset} className="mb-2 outline">
+          Réinitialiser
+        </Button>
+      </div>
+
+      {/* 🔹 Affiche la liste des pays filtrés */}
       <CountriesList
-        countries={filtered}
-        filters={filters}
-        setFilters={setFilters}
+        searchTerm={searchTerm}
+        region={region}
+        sortOrder={sortOrder}
       />
-    </>
+    </Container>
   );
 };
 
