@@ -62,7 +62,7 @@ const CountriesList = ({ searchTerm, region, sortOrder }) => {
           <p className="text-light mt-3">Chargement des pays...</p>
         </div>
       ) : filteredCountries.length === 0 ? (
-        <p className="text-center text-warning fs-5">Aucun pays trouvé 😢</p>
+        <p className="text-center text-warning fs-5">Aucun pays trouvé </p>
       ) : (
         <Row>
           {filteredCountries.map((country) => (
